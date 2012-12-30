@@ -1,0 +1,8 @@
+<h1>Topics</h1>
+<p>
+  <ul>
+    <% @topics.each do |topic| %>
+      <li><%= link_to topic.name, topic_path(topic) %></li>
+    <% end -%>
+  </ul>
+</p>
