@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'capybara/rspec'
 
-describe "the articles interface" do
+describe "the topics interface" do
   before(:all) do
     @topics = []
     3.times { @topics << Topic.create(name:['english', 'urdu', 'history'].sample)}
@@ -29,6 +29,35 @@ describe "the articles interface" do
       click_link topic.name
       puts page.current_path
       current_path.should eq(topic_path(topic))
+    end
+  end
+
+  describe "on the show page" do
+    before (:each) do
+      @topic = @topics.first
+      @topic.cards.new(:question => 'Hatta', answer:'Katta').save
+      @topic.cards.new(:question => 'Johootha', answer:'Mootha').save
+      @topic.cards.new(:question => 'Lamba', answer:'Tagda').save
+      visit topic_path(@topic)
+    end
+
+    it "should show topic title in h1" do
+      page.should have_selector 'h1', text:@topic.name
+    end
+
+    it "should have the questions and answers for each card" do
+      @topic.cards.each do |card|
+        page.should have_content card.question
+        page.should have_content card.answer
+      end
+    end
+
+    it "should add a new card" do
+      fill_in 'Question', with:"Tagda"
+      fill_in 'Answer', with:"Pahelwan"
+      click_button "Add a card"
+      page.should have_content "Tagda"
+      page.should have_content "Pahelwan"
     end
   end
 
