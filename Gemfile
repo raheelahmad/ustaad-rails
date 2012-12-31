@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-
+gem 'bcrypt-ruby'
 gem 'sqlite3'
 
 group :assets do
