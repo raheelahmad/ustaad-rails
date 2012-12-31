@@ -1,1 +1,8 @@
-<h1 id=""> <%= @topic.name %> </h1>
+<h1> <%= @topic.name %> </h1>
+<ul>
+  <% @topic.cards.each do |card| %>
+    <li><%= card.question %> > <%= card.answer %></li>
+  <% end %>
+</ul>
+<hr />
+<%= render partial:'card' %>

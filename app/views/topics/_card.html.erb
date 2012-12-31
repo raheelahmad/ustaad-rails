@@ -1,0 +1,17 @@
+Add another question:
+<%= form_for @card do |f| %>
+  <%= f.hidden_field :topic_id %>
+  <table border="0">
+    <smaller>
+    <tr>
+      <td><%= f.label :question %></td>
+      <td><%= f.text_field :question %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :answer %></td>
+      <td><%= f.text_field :answer %></td>
+    </tr>
+  </table>
+  </smaller>
+  <%= f.submit %>
+<% end %>

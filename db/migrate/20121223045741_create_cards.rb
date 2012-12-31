@@ -3,6 +3,7 @@ class CreateCards < ActiveRecord::Migration
     create_table :cards do |t|
       t.string :question
       t.string :answer
+      t.integer :topic_id
 
       t.timestamps
     end

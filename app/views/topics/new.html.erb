@@ -1,5 +1,8 @@
 <h1>Create a new Topic</h1>
 <%= form_for @topic do |f| %>
+  <% @topic.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
   <%= f.label :name %><br />
   <%= f.text_field :name %><br />
   <%= f.submit %>

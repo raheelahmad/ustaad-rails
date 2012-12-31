@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20121223045741) do
   create_table "cards", :force => true do |t|
     t.string   "question"
     t.string   "answer"
+    t.integer  "topic_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -8,7 +8,10 @@
 </head>
 <body>
 
-<%= yield %>
+  <% flash.each do |key, message| %>
+    <%= content_tag :p, message %>
+  <% end %>
+  <%= yield %>
 
 </body>
 </html>
