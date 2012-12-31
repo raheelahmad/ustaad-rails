@@ -1,6 +1,10 @@
 Ustaad::Application.routes.draw do
+  root to:'topics#index', as:'root'
   resources :topics
   resources :cards
+  resources :users
+
+  match "signup" => "users#new", as:'signup'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
