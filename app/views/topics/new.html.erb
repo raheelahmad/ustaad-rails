@@ -3,6 +3,7 @@
   <% @topic.errors.full_messages.each do |msg| %>
     <%= msg %>
   <% end %>
+  <%= f.hidden_field :user_id %>
   <%= f.label :name %><br />
   <%= f.text_field :name %><br />
   <%= f.submit %>

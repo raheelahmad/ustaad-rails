@@ -1,5 +1,11 @@
 %h1 Home
 - if current_user
-  = current_user.email
+  - if !current_user.latestTopics.nil?
+    %h2 Latest topics
+    %ul
+    - current_user.latestTopics.each do |topic|
+      %li
+        = link_to topic.name, topic_path(topic)
+  = link_to 'Create topic', new_topic_path
 - else
   = "Please log in"
