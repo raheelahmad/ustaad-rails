@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   validates_presence_of :email
+  has_many :topics
 
   has_secure_password
 
