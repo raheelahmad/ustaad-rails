@@ -3,8 +3,11 @@ Ustaad::Application.routes.draw do
   resources :topics
   resources :cards
   resources :users
+  resources :sessions
 
   match "signup" => "users#new", as:'signup'
+  match "signin" => "sessions#new", as:'signin'
+  match "logout" => "sessions#destroy", as:'logout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
