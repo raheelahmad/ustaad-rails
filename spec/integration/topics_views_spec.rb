@@ -1,10 +1,17 @@
 require 'spec_helper'
 require 'capybara/rspec'
+require_relative '../support/helper.rb'
 
 describe "the topics interface" do
   before(:all) do
+    user = signin
     @topics = []
-    3.times { @topics << Topic.create(name:['english', 'urdu', 'history'].sample)}
+    3.times do
+      topic = Topic.new(name:['english', 'urdu', 'history'].sample)
+      topic.user_id = user.id
+      topic.save
+      @topics << topic
+    end
   end
 
   describe "on the index page" do

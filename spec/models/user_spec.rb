@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) { @user = User.new(email:"rahmad@fitbit.com") }
+  before(:each) { @user = User.new(email:"rahmad@me.com") }
 
   it "should not be valid without an email address" do
     @user.email = nil
