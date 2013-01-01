@@ -22,6 +22,7 @@ describe "the users interface" do
 
       current_path.should eq(root_path)
       page.should have_content "You have been signed up"
+      page.should have_content @user.email
     end
 
     it "should fail signup for mismatched password" do
