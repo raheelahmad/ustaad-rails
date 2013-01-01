@@ -1,6 +1,10 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    if params[:user_id]
+      @topics = Topic.where(user_id:params[:user_id])
+    else
+      @topics = Topic.all
+    end
   end
 
   def show
