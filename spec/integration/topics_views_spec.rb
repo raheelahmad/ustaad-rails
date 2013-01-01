@@ -27,7 +27,6 @@ describe "the topics interface" do
     it "should visit a title's show page" do
       topic = @topics.first
       click_link topic.name
-      puts page.current_path
       current_path.should eq(topic_path(topic))
     end
   end

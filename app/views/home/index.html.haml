@@ -1,0 +1,5 @@
+%h1 Home
+- if current_user
+  = current_user.email
+- else
+  = "Please log in"

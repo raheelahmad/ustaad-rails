@@ -1,5 +1,5 @@
 Ustaad::Application.routes.draw do
-  root to:'topics#index', as:'root'
+  root to:'home#index', as:'root'
   resources :topics
   resources :cards
   resources :users

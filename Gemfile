@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'bcrypt-ruby'
 gem 'sqlite3'
+gem 'haml'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
