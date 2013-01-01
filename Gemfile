@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'bcrypt-ruby'
-gem 'sqlite3'
 gem 'haml'
 
 group :assets do
@@ -12,13 +11,20 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'virb'
+end
+
+group :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
 end
 
-group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
