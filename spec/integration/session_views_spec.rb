@@ -16,6 +16,7 @@ describe "the sessions interface" do
     it "should sign in the filled in user" do
       signin
       page.should have_content 'You are signed in'
+      page.should have_content user.email
       page.should have_link 'Logout', href:logout_path
     end
   end

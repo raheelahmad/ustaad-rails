@@ -4,6 +4,8 @@ require_relative '../support/helper.rb'
 describe "home views" do
 
   it "should have a login prompt if not logged in" do
-    signin
+    user = signin
+    page.should have_content "You are signed in"
+    page.should have_content user.email
   end
 end
