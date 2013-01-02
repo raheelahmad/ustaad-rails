@@ -27,7 +27,7 @@ describe "the topics interface" do
     
     it "should list the titles as links" do
       @topics.each do |topic|
-        page.should have_link topic.name, href:topic_path(topic)
+        page.should have_link topic.display_name, href:topic_path(topic)
       end
     end
 

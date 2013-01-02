@@ -22,7 +22,7 @@ describe "home views" do
     visit root_path
     page.should have_content "Latest topics"
     user.topics.last(3).each do |topic|
-      page.should have_link topic.name, href:topic_path(topic)
+      page.should have_link topic.display_name, href:topic_path(topic)
     end
   end
 
@@ -38,10 +38,10 @@ describe "home views" do
     click_link "All topics"
     
     user.topics.each do |topic|
-      page.should have_link topic.name, href:topic_path(topic)
+      page.should have_link topic.display_name, href:topic_path(topic)
     end
 
-    page.should_not have_link extra_topic.name
+    page.should_not have_link extra_topic.display_name
   end
 
   it "should show a link to create new topic" do
