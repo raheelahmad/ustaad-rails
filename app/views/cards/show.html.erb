@@ -1,2 +1,9 @@
-<h1>Cards#show</h1>
-<p>Find me in app/views/cards/show.html.erb</p>
+<strong>Question:</strong> <%= @card.question %><br />
+<strong>Answer:</strong> <%= @card.answer %>
+
+<% if @card.image.exists? %>
+  <h2>Photo</h2>
+  <%= image_tag @card.image %>
+<% end %>
+
+<p><%= link_to "Back to #{@card.topic.name}", topic_path(@card.topic) %></p>
