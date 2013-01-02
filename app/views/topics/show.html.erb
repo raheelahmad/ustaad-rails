@@ -1,10 +1,9 @@
 <h1> <%= @topic.name %> </h1>
 <ul>
   <% @topic.cards.each do |card| %>
-    <li><%= card.question %> > <%= card.answer %></li>
-    <% if card.image.exists? %>
-      <%= image_tag card.image.url, width:"200"  %>
-    <% end %>
+    <li>
+      <%= display_text card %>
+    </li>
   <% end %>
 </ul>
 <hr />

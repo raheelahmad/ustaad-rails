@@ -58,7 +58,6 @@ describe "the topics interface" do
     it "should have the questions and answers for each card" do
       @topic.cards.each do |card|
         page.should have_content card.question
-        page.should have_content card.answer
       end
     end
 
@@ -67,7 +66,6 @@ describe "the topics interface" do
       fill_in 'Answer', with:"Pahelwan"
       click_button "Add a card"
       page.should have_content "Tagda"
-      page.should have_content "Pahelwan"
     end
   end
 
