@@ -47,6 +47,10 @@ describe "the topics interface" do
       visit topic_path(@topic)
     end
 
+    it "should have form field for image upload" do
+      page.should have_field :image
+    end
+
     it "should show topic title in h1" do
       page.should have_selector 'h1', text:@topic.name
     end
