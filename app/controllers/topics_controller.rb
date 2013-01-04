@@ -2,6 +2,8 @@ class TopicsController < ApplicationController
   def index
     if params[:user_id]
       @topics = Topic.where(user_id:params[:user_id])
+    elsif session[:user_id]
+      @topics = Topic.where(user_id:session[:user_id])
     else
       @topics = Topic.all
     end
@@ -29,5 +31,12 @@ class TopicsController < ApplicationController
       flash[:notice] = "Could not create the topic. See errors below"
       render "new"
     end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+    name = @topic.name
+    @topic.destroy
+    redirect_to topics_path, notice:"#{name} has been deleted"
   end
 end

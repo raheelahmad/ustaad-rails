@@ -61,6 +61,13 @@ describe "the topics interface" do
       end
     end
 
+    it "should delete the topic via a delete link" do
+      page.should have_link 'Delete this topic', href:topic_path(@topic)
+      click_link 'Delete this topic'
+      current_path.should eq(topics_path)
+      page.should_not have_content @topic.display_name
+    end
+
     it "should add a new card" do
       fill_in 'Question', with:"Tagda"
       fill_in 'Answer', with:"Pahelwan"
