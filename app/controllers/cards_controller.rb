@@ -14,4 +14,11 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
   end
+
+  def destroy
+    card = Card.find(params[:id])
+    name = card.question; topic = card.topic
+    card.destroy
+    redirect_to topic_path(topic), notice:"#{name} was deleted"
+  end
 end
