@@ -61,6 +61,14 @@ describe "the topics interface" do
       end
     end
 
+    it "should not show a topic if the current user does not match" do
+      unauthorized_topic = Topic.new(name:'Termination')
+      unauthorized_topic.user_id = @topics.first.id + 1
+      unauthorized_topic.save
+      visit topic_path(unauthorized_topic)
+      page.should_not have_content unauthorized_topic.name
+      #page.should have_content "You are not authorized to view this "
+    end
     it "should delete the topic via a delete link" do
       page.should have_link 'Delete this topic', href:topic_path(@topic)
       click_link 'Delete this topic'

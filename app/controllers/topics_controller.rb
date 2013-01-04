@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = current_user.topics.find(params[:id])
     @card = Card.new
     @card.topic_id = @topic.id
   end
