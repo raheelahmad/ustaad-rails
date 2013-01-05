@@ -10,7 +10,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    puts current_user.email
     @topic = current_user.topics.find(params[:id])
     @card = Card.new
     @card.topic_id = @topic.id

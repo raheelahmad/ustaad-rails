@@ -12,7 +12,13 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:id])
+    if !current_user  
+      raise ActiveRecord::RecordNotFound.new
+    end
+    current_user.topics.each do |topic|
+      card = topic.cards.where(id: params[:id])
+      @card = card.first if card
+    end
   end
 
   def destroy
