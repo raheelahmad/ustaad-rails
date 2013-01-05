@@ -5,10 +5,10 @@ require_relative '../support/helper.rb'
 describe "home views" do
   def add_topics(user)
     topics = ['History', 'Hindi', 'Urdu', 'English'].collect do |name|
-      topic = user.topics.new(name:name)
+      topic = Topic.new(name:name)
       topic.user_id = user.id
+      topic.save
     end
-    user.save
   end
 
   it "should have a login prompt if not logged in" do
@@ -33,14 +33,7 @@ describe "home views" do
     extra_topic.user_id = (user.id + 1)
     extra_topic.save
 
-    visit root_path
-    
     click_link "All topics"
-    
-    user.topics.each do |topic|
-      page.should have_link topic.display_name, href:topic_path(topic)
-    end
-
     page.should_not have_link extra_topic.display_name
   end
 

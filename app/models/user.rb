@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   has_many :topics
 
+  before_save :create_remember_token
+
   has_secure_password
 
   def latestTopics
@@ -16,5 +18,11 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  private
+
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 end

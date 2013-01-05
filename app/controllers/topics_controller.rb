@@ -2,14 +2,15 @@ class TopicsController < ApplicationController
   def index
     if params[:user_id]
       @topics = Topic.where(user_id:params[:user_id])
-    elsif session[:user_id]
-      @topics = Topic.where(user_id:session[:user_id])
+    elsif current_user
+      @topics = Topic.where(user_id:current_user.id)
     else
-      @topics = Topic.all
+      @topics = []
     end
   end
 
   def show
+    puts current_user.email
     @topic = current_user.topics.find(params[:id])
     @card = Card.new
     @card.topic_id = @topic.id
@@ -17,7 +18,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    @topic.user_id = session[:user_id]
+    @topic.user_id = current_user.id
   end
 
   def create

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:email], params[:password])
     if user
-      session[:user_id] = user.id
+      cookies[:remember_token] = user.remember_token
       redirect_to root_path, notice:'You are signed in'
     else
       flash[:error] = "Incorrect email or password"
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies[:remember_token] = nil
     redirect_to root_path, notice:"You have been signed out"
   end
 end

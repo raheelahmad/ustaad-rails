@@ -7,5 +7,6 @@ def signin
   fill_in 'Password', with:user.password
   #page.driver.post user_session_path, :user => {:email => user.email, :password => 'superpassword'}
   click_button 'Sign in'
+  cookies[:remember_token] = user.remember_token
   user
 end
