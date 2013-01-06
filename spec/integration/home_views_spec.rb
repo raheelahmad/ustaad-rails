@@ -33,6 +33,8 @@ describe "home views" do
     page.should have_content 'Cards added recently'
 
     @cards.last(5).each { |card| page.should have_content card.question}
+
+    page.should have_link 'All recent cards', cards_path
   end
 
   it "should show last three updated topic links for the user" do
