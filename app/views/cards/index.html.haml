@@ -1,0 +1,5 @@
+%h1 All cards
+%ul
+  - @cards.each do |card|
+    %li
+      = link_to card.question, card_path(card)

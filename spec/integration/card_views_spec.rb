@@ -54,16 +54,41 @@ describe "card views" do
       @card.save
     end
 
-    before(:each) { visit card_path(@card) }
+    describe "show page" do
+      before(:each) { visit card_path(@card) }
 
-    it "should show the public card" do
-      page.should have_content @card.question
-      page.should have_content @card.answer
+      it "should show the public card" do
+        page.should have_content @card.question
+        page.should have_content @card.answer
+      end
+
+      it "should not have links to delete or edit" do
+        page.should_not have_link 'Delete?'
+        page.should_not have_link 'Edit'
+        page.should_not have_link "Back to #{@card.topic.name}"
+      end
     end
+    describe "index page" do
+      before(:each) do
+        6.times do |i|
+          card = @topic.cards.new(question:random_string(10), answer:random_string(10))
+          card.public = true
+          card.save
+        end
+        private_card = @topic.cards.new(question:random_string(10), answer:random_string(10))
+        private_card.save
+        visit cards_path
+      end
 
-    it "should not have links to delete or edit" do
-      page.should_not have_link 'Delete?'
-      page.should_not have_link 'Edit'
+      it "should show the public cards" do
+        @topic.cards.each do |card|
+          if card.public
+            page.should have_link card.question, href:card_path(card)
+          else
+            page.should_not have_link card.question
+          end
+        end
+      end
     end
   end
 end

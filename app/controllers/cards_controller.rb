@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_filter :authorize, except: :show
+  before_filter :authorize, except: [:show, :index]
 
   def create
     topic_id = params[:card].delete(:topic_id)
@@ -10,6 +10,14 @@ class CardsController < ApplicationController
     else
       flash[:error] = "Could not add card."
       render "new"
+    end
+  end
+
+  def index
+    if current_user
+      @cards = user.topics.cards
+    else
+      @cards = Card.where(public:true)
     end
   end
 
