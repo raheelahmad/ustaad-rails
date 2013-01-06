@@ -5,6 +5,7 @@
   <h2>Photo</h2>
   <%= image_tag @card.image %>
 <% end %>
+<%= 'Public' if @card.public %>
 <br />
 <%= link_to "Delete?", card_path(@card), method: :delete, confirm:'Are you sure?' %> |
 <%= link_to 'Edit', edit_card_path(@card) %>

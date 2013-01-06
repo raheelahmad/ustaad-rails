@@ -18,6 +18,17 @@ describe "card views" do
   describe "on the show page" do
     before(:each) { visit card_path(@card) }
 
+    it "should list the card as public" do
+      page.should_not have_content 'Public'
+    end
+
+    it "should list the card as private" do
+      @card.public = true
+      @card.save
+      visit card_path(@card)
+      page.should have_content 'Public'
+    end
+
     it "should show a link to edit the card" do
       page.should have_link 'Edit', href:edit_card_path(@card)
     end
