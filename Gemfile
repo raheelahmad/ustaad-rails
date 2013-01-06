@@ -16,6 +16,7 @@ group :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'virb'
+  gem 'meta_request', '0.2.1'
 end
 
 group :test do
