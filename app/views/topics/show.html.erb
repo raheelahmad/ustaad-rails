@@ -7,7 +7,9 @@
   <% end %>
 </ul>
 <p>
-  <%= link_to "Delete this topic", topic_path(@topic), method: :delete, confirm:"Are you sure?" %>
+  <%= link_to "Delete", topic_path(@topic), method: :delete, confirm:"Are you sure?" %> | 
+  <%= link_to 'Edit', edit_topic_path(@topic) %>
 </p>
 <hr />
-<%= render partial:'card' %>
+Add another question:
+<%= render partial:'cards/form' %>

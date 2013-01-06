@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :authorize
+
   def index
     if params[:user_id]
       @topics = Topic.where(user_id:params[:user_id])
@@ -39,4 +41,17 @@ class TopicsController < ApplicationController
     @topic.destroy
     redirect_to topics_path, notice:"#{name} has been deleted"
   end
+
+  def edit
+    @topic = current_user.topics.find(params[:id])
+  end
+
+  def update
+    topic = current_user.topics.find(params[:id])
+    if topic
+      topic.update_attributes(params[:topic])
+      redirect_to topic_path(topic)
+    end
+  end
+
 end

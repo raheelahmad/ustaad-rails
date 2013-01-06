@@ -56,6 +56,9 @@ describe "the topics interface" do
       page.should have_selector 'h1', text:@topic.name
     end
 
+    it "should show a link to edit the topic" do
+      page.should have_link 'Edit', href:edit_topic_path(@topic)
+    end
     it "should have the questions and answers for each card" do
       @topic.cards.each do |card|
         page.should have_content card.question
@@ -73,8 +76,8 @@ describe "the topics interface" do
     # end
 
     it "should delete the topic via a delete link" do
-      page.should have_link 'Delete this topic', href:topic_path(@topic)
-      click_link 'Delete this topic'
+      page.should have_link 'Delete', href:topic_path(@topic)
+      click_link 'Delete'
       current_path.should eq(topics_path)
       page.should_not have_content @topic.display_name
     end
@@ -82,11 +85,22 @@ describe "the topics interface" do
     it "should add a new card" do
       fill_in 'Question', with:"Tagda"
       fill_in 'Answer', with:"Pahelwan"
-      click_button "Add a card"
+      click_button "Create Card"
       page.should have_content "Tagda"
     end
   end
 
+  describe "one the edit page" do
+    it "should update a topic" do
+      topic = @topics.first
+      visit edit_topic_path(topic)
+
+      new_name = "Badmaash"
+      fill_in 'Name', with:new_name
+      click_button "Update Topic"
+      page.should have_content new_name
+    end
+  end
   after(:all) do
     @topics = Topic.all
     @topics.each { |topic| 

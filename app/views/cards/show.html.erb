@@ -6,6 +6,7 @@
   <%= image_tag @card.image %>
 <% end %>
 <br />
-<%= link_to "Delete?", card_path(@card), method: :delete, confirm:'Are you sure?' %>
+<%= link_to "Delete?", card_path(@card), method: :delete, confirm:'Are you sure?' %> |
+<%= link_to 'Edit', edit_card_path(@card) %>
 
 <p><%= link_to "Back to #{@card.topic.name}", topic_path(@card.topic) %></p>

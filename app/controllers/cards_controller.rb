@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_filter :authorize
+
   def create
     topic_id = params[:card].delete(:topic_id)
     @card = Card.new(params[:card])
@@ -15,10 +17,7 @@ class CardsController < ApplicationController
     if !current_user  
       raise ActiveRecord::RecordNotFound.new
     end
-    current_user.topics.each do |topic|
-      card = topic.cards.where(id: params[:id])
-      @card = card.first if card
-    end
+    @card = user_card_for_id(params[:id])
   end
 
   def destroy
@@ -26,5 +25,26 @@ class CardsController < ApplicationController
     name = card.question; topic = card.topic
     card.destroy
     redirect_to topic_path(topic), notice:"#{name} was deleted"
+  end
+
+  def edit
+    @card = user_card_for_id(params[:id])
+  end
+
+  def update
+    topic_id = params[:card].delete(:topic_id)
+    card = user_card_for_id(:id)
+    card.update_attributes(params[:card])
+    redirect_to topic_path(topic_id)
+  end
+
+  def user_card_for_id(card_id)
+    found_card = nil
+    current_user.topics.each do |topic|
+      card = topic.cards.where(id: params[:id])
+      found_card = card.first if card
+    end
+
+    found_card
   end
 end

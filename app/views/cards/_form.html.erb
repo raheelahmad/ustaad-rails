@@ -1,4 +1,3 @@
-Add another question:
 <%= form_for @card, html:{ multipart:true } do |f| %>
   <%= f.hidden_field :topic_id %>
   <table border="0">
@@ -15,5 +14,5 @@ Add another question:
       <td><%= f.file_field :image %></td>
     </tr>
   </table>
-  <%= f.submit "Add a card" %>
+  <%= f.submit %>
 <% end %>
