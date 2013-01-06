@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, except: :show
 
   def create
     topic_id = params[:card].delete(:topic_id)
@@ -14,10 +14,12 @@ class CardsController < ApplicationController
   end
 
   def show
-    if !current_user  
-      raise ActiveRecord::RecordNotFound.new
+    if current_user
+      @card = user_card_for_id(params[:id])
+    else
+      @card = Card.find(params[:id])
+      raise ActiveRecord::RecordNotFound.new unless @card.public
     end
-    @card = user_card_for_id(params[:id])
   end
 
   def destroy
