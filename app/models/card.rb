@@ -3,10 +3,15 @@ class Card < ActiveRecord::Base
   has_attached_file :image
   validates_presence_of :answer, :question
   after_create :default_values
-
   belongs_to :topic
 
-  def default_values
-    self.public = false
+  def self.latest_cards
+    Card.where(public:true).order("updated_at DESC")
   end
+
+  private
+
+    def default_values
+      self.public = false
+    end
 end

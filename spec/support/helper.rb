@@ -1,5 +1,9 @@
+def random_string(len)
+  rand(36**len).to_s(36)
+end
+
 def signin
-  email = rand(36**6).to_s(36) + "@gmail.com"
+  email = random_string(6) + "@gmail.com"
   user = User.new(email:email, password:'raheel')
   user.save
   visit signin_path

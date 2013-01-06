@@ -16,6 +16,25 @@ describe "home views" do
     page.should have_link 'Login', href:signin_path
   end
 
+  it "should list the last 5 public cards" do
+    user = User.create(email:'raheel@gmail.com', password:'raheel')
+    topic = Topic.new(name:'English')
+    topic.user_id = user.id
+    topic.save
+    @cards = []
+    6.times do |i|
+      card = Card.new(question:random_string(6), answer:random_string(6))
+      card.topic_id = topic.id
+      card.public = true
+      card.save
+      @cards << card
+    end
+    visit root_path
+    page.should have_content 'Cards added recently'
+
+    @cards.last(5).each { |card| page.should have_content card.question}
+  end
+
   it "should show last three updated topic links for the user" do
     user = signin
     add_topics(user)
