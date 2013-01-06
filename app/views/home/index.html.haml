@@ -1,4 +1,4 @@
-%h1 Home
+%h1 Ustaad
 - if current_user
   - if !current_user.latestTopics.nil?
     %h2 Latest topics
@@ -8,9 +8,10 @@
         = link_to topic.display_name, topic_path(topic)
   = link_to 'All topics', topics_path(user_id:current_user.id)
   = link_to 'Create topic', new_topic_path
-%h2 Cards added recently
+%h2 Public cards added recently
 %ul
 - @latest_cards.each do |card|
   %li
     = link_to card.question, card_path(card)
-
+%p
+  = link_to 'All recent cards', cards_path
