@@ -35,7 +35,7 @@ class CardsController < ApplicationController
     topic_id = params[:card].delete(:topic_id)
     card = user_card_for_id(:id)
     card.update_attributes(params[:card])
-    redirect_to topic_path(topic_id)
+    redirect_to card_path(card)
   end
 
   def user_card_for_id(card_id)

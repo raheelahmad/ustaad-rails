@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  attr_accessible :answer, :question, :image
+  attr_accessible :answer, :question, :image, :public
   has_attached_file :image
   validates_presence_of :answer, :question
   after_create :default_values

@@ -13,6 +13,10 @@
       <td><%= f.label :image %></td>
       <td><%= f.file_field :image %></td>
     </tr>
+    <tr>
+      <td><%= f.label :public %></td>
+      <td><%= f.check_box :public %></td>
+    </tr>
   </table>
   <%= f.submit %>
 <% end %>

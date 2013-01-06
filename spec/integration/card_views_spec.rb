@@ -42,9 +42,11 @@ describe "card views" do
       new_answer = @card.answer + " bhai saheb"
       fill_in 'Question', with:new_question
       fill_in 'Answer', with:new_answer
+      page.check 'Public'
       click_button "Update Card"
 
       page.should have_content new_question
+      page.should have_content 'Public'
     end
   end
 
