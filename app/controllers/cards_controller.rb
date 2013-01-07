@@ -15,9 +15,9 @@ class CardsController < ApplicationController
 
   def index
     if current_user
-      @cards = user.topics.cards
+      @cards = user.topics.cards.order("updated_at DESC")
     else
-      @cards = Card.where(public:true)
+      @cards = Card.where(public:true).order("updated_at DESC")
     end
   end
 

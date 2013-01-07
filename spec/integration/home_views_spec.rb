@@ -39,8 +39,6 @@ describe "home views" do
         page.should have_link 'All recent cards', href:cards_path
       end
   end
-
-
     end
   it "should show last three updated topic links for the user" do
     user = signin
@@ -63,17 +61,5 @@ describe "home views" do
     page.should_not have_link extra_topic.display_name
   end
 
-  it "should show a link to create new topic" do
-    signin
-    page.should have_link 'Create topic', href:new_topic_path
-  end
 
-  it "should add a topic to the topics list" do
-    signin
-    click_link 'Create topic'
-    fill_in 'Name', with:'Strava'
-    click_button 'Create Topic'
-    visit root_path
-    page.should have_content 'Strava'
-  end
 end

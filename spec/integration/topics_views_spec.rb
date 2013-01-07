@@ -36,6 +36,18 @@ describe "the topics interface" do
       click_link topic.name
       current_path.should eq(topic_path(topic))
     end
+
+    it "should show a link to create new topic" do
+      page.should have_link 'Create topic', href:new_topic_path
+    end
+
+    it "should add a topic to the topics list" do
+      click_link 'Create topic'
+      fill_in 'Name', with:'Strava'
+      click_button 'Create Topic'
+      visit root_path
+      page.should have_content 'Strava'
+    end
   end
 
   describe "on the show page" do
