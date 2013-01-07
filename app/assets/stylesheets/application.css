@@ -14,3 +14,24 @@
 body {
   font-family: "Segoe UI"
 }
+
+.notice {
+  background-color:green;
+  border:thin solid black;
+  width:60%;
+  padding:10px;
+}
+
+.error {
+  background-color:red;
+  border:thin solid black;
+  width:60%;
+  padding:10px;
+}
+
+.field_error {
+  background-color:#997777;
+  border:thin solid black;
+  width:40%;
+  padding:10px;
+}

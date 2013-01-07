@@ -9,7 +9,7 @@
 <body>
 
   <% flash.each do |key, message| %>
-    <%= content_tag :p, message %>
+    <%= content_tag :p, message, class:key %>
   <% end %>
   <%= yield %>
   <hr />

@@ -1,6 +1,9 @@
 <h1>Sign up</h1>
 
 <%= form_for @user do |f| %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <%= content_tag :p, msg, class:"field_error" %>
+  <% end %>
   <table cellspacing="0">
     <tr>
       <td><%= f.label :email %></td>

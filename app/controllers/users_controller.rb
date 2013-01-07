@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       cookies.permanent[:remember_token] = @user.remember_token
       redirect_to root_path, notice:"You have been signed up"
     else
-      flash[:notice] = "Error signing up"
+      flash[:error] = "Error signing up"
       render "new"
     end
   end
