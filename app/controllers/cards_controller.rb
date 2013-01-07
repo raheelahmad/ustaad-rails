@@ -24,7 +24,9 @@ class CardsController < ApplicationController
   def show
     if current_user
       @card = user_card_for_id(params[:id])
-    else
+    end
+
+    if !@card
       @card = Card.find(params[:id])
       raise ActiveRecord::RecordNotFound.new unless @card.public
     end
