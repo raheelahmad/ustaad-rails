@@ -7,19 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="nav">
+    <div id="user-links">
+      <% if current_user %>
+        <%= "Logged in as #{current_user.email}" %> | 
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= link_to 'Login', signin_path %> | 
+        <%= link_to 'Signup', signup_path %>
+      <% end %>
+   </div>
+    <div id="logo">
+      <%= link_to 'Ustaad', root_path %>
+    </div>
+  </div>
 
   <% flash.each do |key, message| %>
     <%= content_tag :p, message, class:key %>
   <% end %>
-  <%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
   <hr />
-  <% if current_user %>
-    <%= "Logged in as #{current_user.email}" %> | 
-    <%= link_to 'Logout', logout_path %>
-  <% else %>
-    <%= link_to 'Login', signin_path %> | 
-    <%= link_to 'Signup', signup_path %>
-  <% end %>
-   | <%= link_to 'Home', root_path %>
 </body>
 </html>

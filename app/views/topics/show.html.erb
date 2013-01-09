@@ -6,8 +6,8 @@
     </li>
   <% end %>
 </ul>
-<p>
-  <%= link_to "Delete", topic_path(@topic), method: :delete, confirm:"Are you sure?" %> | 
+<p class="edit-links">
+  <%= link_to "Delete?", topic_path(@topic), method: :delete, confirm:"Are you sure?" %> | 
   <%= link_to 'Edit', edit_topic_path(@topic) %>
 </p>
 <hr />

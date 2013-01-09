@@ -57,7 +57,7 @@ describe "home views" do
     extra_topic.user_id = (user.id + 1)
     extra_topic.save
 
-    click_link "All topics"
+    click_link "(All)"
     page.should_not have_link extra_topic.display_name
   end
 

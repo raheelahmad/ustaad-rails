@@ -1,0 +1,54 @@
+body {
+  font-size:16px;
+  font-family: "Segoe UI";
+}
+
+a {
+  text-decoration:none;
+}
+
+// Flash
+@mixin flash($bg-color) {
+  background-color:$bg-color;
+  border:thin solid black;
+  width:60%;
+  padding:10px;
+}
+
+.notice {
+  @include flash(green);
+}
+
+.error {
+  @include flash(red);
+}
+
+.field_error {
+  @include flash(#997777);
+  width:40%;
+}
+
+// Nav
+#nav {
+  margin:24px;
+  font-size:18px;
+}
+
+#logo {
+  text-align:left;
+}
+
+#user-links {
+  float:right;
+}
+
+#content {
+  margin-left:50px;
+  margin-right:50px;
+}
+
+.edit-links {
+  text-align:right;
+  margin-right:24px;
+  font-size:14px;
+}
