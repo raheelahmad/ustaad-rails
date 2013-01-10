@@ -56,7 +56,6 @@ describe "the topics interface" do
       @topic.cards.new(:question => 'Hatta', answer:'Katta').save
       @topic.cards.new(:question => 'Johootha', answer:'Mootha').save
       @topic.cards.new(:question => 'Lamba', answer:'Tagda').save
-      # puts "add to user: #{current_user.email}"
       visit topic_path(@topic)
     end
 

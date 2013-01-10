@@ -4,7 +4,8 @@ end
 
 def signin
   email = random_string(6) + "@gmail.com"
-  user = User.new(email:email, password:'raheel')
+  name = "sternameksks"
+  user = User.new(email:email, name:name, password:'raheel')
   user.save
   visit signin_path
   fill_in 'Email', with:user.email

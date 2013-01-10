@@ -47,7 +47,7 @@ describe "card views" do
 
   context "not logged in" do
     before(:each) do
-      user = User.new(email:random_string(6)+"@gmail.com", password:random_string(8))
+      user = User.new(email:random_string(6)+"@gmail.com", name:random_string(10), password:random_string(8))
       user.save
       setup_for_user(user)
       @card.public = true

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation
   validates_presence_of :email
+  validates_presence_of :name
   has_many :topics
 
   before_save :create_remember_token

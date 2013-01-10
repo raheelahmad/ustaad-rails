@@ -10,7 +10,7 @@
   <div id="nav">
     <div id="user-links">
       <% if current_user %>
-        <%= "Logged in as #{current_user.email}" %> | 
+        <%= "Logged in as #{current_user.name}" %> | 
         <%= link_to 'Logout', logout_path %>
       <% else %>
         <%= link_to 'Login', signin_path %> | 

@@ -1,13 +1,17 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) { @user = User.new(email:"rahmad@me.com") }
+  before(:each) { @user = User.new(email:"rahmad@me.com", name:"Raheel") }
 
   it "should not be valid without an email address" do
     @user.email = nil
     @user.should_not be_valid
   end
 
+  it "should not be valid without a name" do
+    @user.name = nil
+    @user.should_not be_valid
+  end
   it "should authenticate with the correct password" do
     @user.password = "raheel"
     @user.save
