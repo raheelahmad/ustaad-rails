@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(:version => 20130109170524) do
     t.string   "question"
     t.string   "answer"
     t.integer  "topic_id"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "public",             :default => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.string   "answer_image_file_name"
+    t.string   "answer_image_content_type"
+    t.integer  "answer_image_file_size"
+    t.datetime "answer_image_updated_at"
+    t.boolean  "public",                    :default => false
   end
 
   create_table "topics", :force => true do |t|

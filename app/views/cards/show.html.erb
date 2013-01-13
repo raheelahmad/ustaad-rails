@@ -1,9 +1,9 @@
 <strong>Question:</strong> <%= @card.question %><br />
 <strong>Answer:</strong> <%= @card.answer %>
 
-<% if @card.image.exists? %>
+<% if @card.answer_image.exists? %>
   <h2>Photo</h2>
-  <%= image_tag @card.image %>
+  <%= image_tag @card.answer_image %>
 <% end %>
 <p>
   <% if @card.public  %>
