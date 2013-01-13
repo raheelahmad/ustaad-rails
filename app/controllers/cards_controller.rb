@@ -27,6 +27,8 @@ class CardsController < ApplicationController
   def show
     if current_user
       @card = user_card_for_id(params[:id])
+      @previous_card = @card.previous(session[:current_card_query_ids])
+      @next_card = @card.next(session[:current_card_query_ids])
     end
 
     if !@card

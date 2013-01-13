@@ -17,6 +17,14 @@
     <%= @card.answer %>
   </div>
 </div>
+<p>
+  <% if @previous_card %>
+    <%= link_to "Previous", card_path(@previous_card) %>
+  <% end %>
+  <% if @next_card %>
+    <%= link_to "Next", card_path(@next_card) %>
+  <% end %>
+</p>
 
 <p>
   <% if @card.public  %>
