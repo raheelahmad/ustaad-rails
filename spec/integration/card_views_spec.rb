@@ -36,6 +36,7 @@ describe "card views" do
         new_answer = @card.answer + " bhai saheb"
         fill_in 'Question', with:new_question
         fill_in 'Answer', with:new_answer
+        attach_file 'Answer image', 'spec/integration/logo.png'
         page.check 'Public'
         click_button "Update Card"
 

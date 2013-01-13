@@ -15,7 +15,10 @@ class CardsController < ApplicationController
 
   def index
     if current_user
-      @cards = user.topics.cards.order("updated_at DESC")
+      @cards = []
+      current_user.topics.each do |topic|
+        @cards << topic.cards.order("updated_at DESC")
+      end
     else
       @cards = Card.where(public:true).order("updated_at DESC")
     end
