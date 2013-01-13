@@ -11,19 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109170524) do
+ActiveRecord::Schema.define(:version => 20130113044226) do
 
   create_table "cards", :force => true do |t|
     t.string   "question"
     t.string   "answer"
     t.integer  "topic_id"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "answer_image_file_name"
     t.string   "answer_image_content_type"
     t.integer  "answer_image_file_size"
     t.datetime "answer_image_updated_at"
-    t.boolean  "public",                    :default => false
+    t.boolean  "public",                      :default => false
+    t.string   "question_image_file_name"
+    t.string   "question_image_content_type"
+    t.integer  "question_image_file_size"
+    t.datetime "question_image_updated_at"
   end
 
   create_table "topics", :force => true do |t|

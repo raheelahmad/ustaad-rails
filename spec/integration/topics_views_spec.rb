@@ -60,7 +60,7 @@ describe "the topics interface" do
     end
 
     it "should have form field for image upload" do
-      page.should have_field :image
+      page.should have_field :answer_image
     end
 
     it "should show topic title in h1" do
@@ -96,8 +96,11 @@ describe "the topics interface" do
     it "should add a new card" do
       fill_in 'Question', with:"Tagda"
       fill_in 'Answer', with:"Pahelwan"
+      attach_file 'Answer image', 'spec/integration/logo.png'
+      attach_file 'Question image', 'spec/integration/logo.png'
       click_button "Create Card"
       page.should have_content "Tagda"
+      page.should have_selector 'img'
     end
   end
 

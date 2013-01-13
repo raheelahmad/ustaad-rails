@@ -1,10 +1,23 @@
-<strong>Question:</strong> <%= @card.question %><br />
-<strong>Answer:</strong> <%= @card.answer %>
+<div id="question-answer">
+  <div id="question">
+    <% if @card.question_image.exists? %>
+      <div class="image">
+        <%= image_tag @card.question_image %>
+      </div>
+    <% end %>
+    <%= @card.question %>
+  </div>
+  <hr />
+  <div id="answer">
+    <% if @card.answer_image.exists? %>
+      <div class="image">
+        <%= image_tag @card.answer_image %>
+      </div>
+    <% end %>
+    <%= @card.answer %>
+  </div>
+</div>
 
-<% if @card.answer_image.exists? %>
-  <h2>Photo</h2>
-  <%= image_tag @card.answer_image %>
-<% end %>
 <p>
   <% if @card.public  %>
     <small><%= 'Public' %></small>

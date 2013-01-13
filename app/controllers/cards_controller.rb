@@ -14,13 +14,13 @@ class CardsController < ApplicationController
   end
 
   def index
+    @cards = []
     if current_user
-      @cards = []
       current_user.topics.each do |topic|
-        @cards << topic.cards.order("updated_at DESC")
+        topic.cards.order("updated_at DESC").all.each { |card| @cards << card }
       end
     else
-      @cards = Card.where(public:true).order("updated_at DESC")
+      Card.where(public:true).order("updated_at DESC").all.each { |card| @cards << card }
     end
   end
 

@@ -42,6 +42,7 @@ describe "card views" do
 
         page.should have_content new_question
         page.should have_content 'Public'
+        page.should have_selector 'img'
       end
     end
   end
