@@ -15,6 +15,8 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.find(params[:id])
     @card = Card.new
     @card.topic_id = @topic.id
+
+    session[:current_card_query_ids] = @topic.cards.map(&:id)
   end
 
   def new
