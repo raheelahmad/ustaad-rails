@@ -15,3 +15,18 @@ def signin
   cookies[:remember_token] = user.remember_token
   user
 end
+
+def add_some_cards_to_topic(options)
+  topic = options[:topic]
+  make_public = options[:public]
+  cards = []
+  6.times do |i|
+    card = Card.new(question:random_string(6), answer:random_string(6))
+    card.topic_id = topic.id
+    card.public = make_public
+    card.save
+    cards << card
+  end
+
+  cards
+end

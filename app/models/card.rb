@@ -13,9 +13,11 @@ class Card < ActiveRecord::Base
   def previous(query)
     unless query.nil?
       card_index = query.find_index(self.id)
-      previous_card_id = query[card_index - 1] unless card_index.zero?
-      if previous_card_id && previous_card_id >= 0
-        Card.find(previous_card_id) 
+      if card_index
+        previous_card_id = query[card_index - 1] unless card_index.zero?
+        if previous_card_id && previous_card_id >= 0
+          Card.find(previous_card_id) 
+        end
       end
     end
   end
@@ -23,9 +25,11 @@ class Card < ActiveRecord::Base
   def next(query)
     unless query.nil?
       card_index = query.find_index(self.id)
-      next_card_id = query[card_index + 1] unless card_index >= query.length - 1
-      if next_card_id
-        Card.find(next_card_id) 
+      if card_index
+        next_card_id = query[card_index + 1] unless card_index >= query.length - 1
+        if next_card_id
+          Card.find(next_card_id) 
+        end
       end
     end
   end

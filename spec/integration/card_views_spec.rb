@@ -9,6 +9,18 @@ describe "card views" do
       setup_for_user(@user)
     end
 
+    it "should show next and previous links from home page" do
+      topic = Topic.new(name:'English')
+      topic.user_id = @user.id
+      @cards = add_some_cards_to_topic(topic:topic, public:true)
+      visit root_path
+      click_link @cards.at(-1).question # last added will appear first in the link
+      page.should have_link 'Next', href:card_path(@cards.at(-2))
+      click_link 'Next'
+      page.should have_link 'Next', href:card_path(@cards.at(-3))
+      page.should have_link 'Previous', href:card_path(@cards.at(-1))
+    end
+
     describe "on the show page" do
       before(:each) { visit card_path(@card) }
 
@@ -28,8 +40,9 @@ describe "card views" do
       end
     end
 
-    describe "one the edit page" do
+    describe "on the edit page" do
       before(:each)  { visit edit_card_path(@card) }
+
 
       it "on the edit page" do
         new_question = @card.question + " bhai saheb"

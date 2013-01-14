@@ -22,14 +22,7 @@ describe "home views" do
         user = User.create(email:'raheel@gmail.com', password:'raheel')
         topic = Topic.new(name:'English')
         topic.user_id = user.id
-        @cards = []
-        6.times do |i|
-          card = Card.new(question:random_string(6), answer:random_string(6))
-          card.topic_id = topic.id
-          card.public = true
-          card.save
-          @cards << card
-        end
+        @cards = add_some_cards_to_topic(topic:topic, public:true)
         visit root_path
       end
 
