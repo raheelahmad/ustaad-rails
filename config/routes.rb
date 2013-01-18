@@ -9,6 +9,7 @@ Ustaad::Application.routes.draw do
   match "signin" => "sessions#new", as:'signin'
   match "logout" => "sessions#destroy", as:'logout'
   match "profile" => "users#edit", as:'profile'
+  match "card_for_topic" => "cards#switch_to_topic", as:'card_for_topic'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

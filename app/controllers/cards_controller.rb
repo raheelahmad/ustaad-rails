@@ -27,6 +27,7 @@ class CardsController < ApplicationController
   def show
     if current_user
       @card = user_card_for_id(params[:id])
+      @all_topics = Topic.where(user_id:current_user.id)
     end
 
     if !@card
@@ -58,13 +59,18 @@ class CardsController < ApplicationController
     redirect_to card_path(card)
   end
 
+  def switch_to_topic
+    topic_id = params[:topic_id]
+    topic = Topic.find(topic_id)
+    redirect_to card_path(topic.cards.first)
+  end
   def user_card_for_id(card_id)
     found_card = nil
     current_user.topics.each do |topic|
-      card = topic.cards.where(id: params[:id])
-      found_card = card.first if card
+      card = topic.cards.where(id:card_id)
+      found_card = card.first if card and !found_card
     end
-
+    puts found_card.question
     found_card
   end
 end

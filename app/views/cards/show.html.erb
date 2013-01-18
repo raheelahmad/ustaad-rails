@@ -1,3 +1,9 @@
+<% if @all_topics %>
+  <%= form_tag(card_for_topic_path) do %>
+    <%= collection_select(nil, :topic_id, @all_topics, :id, :name, selected:@card.topic.id) %>
+    <%= submit_tag 'Go' %>
+  <% end %>
+<% end %>
 <div id="question-answer">
   <div id="question">
     <% if @card.question_image.exists? %>
